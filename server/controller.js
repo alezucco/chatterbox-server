@@ -52,12 +52,21 @@ exports.handler = function(request, response) {
   headers['Content-Type'] = "application/json";
 
   response.writeHead(statusCode, headers);
-
   if (request.method === "OPTIONS") {
+    response.writeHead(statusCode, headers);
+    return response.end('');
+  }
+  if (request.method === "POST") {
+    response.writeHead(statusCode, headers);
    return response.end('');
   }
-  var path=url.parse(request.url).path.split('/')[1]
-  return router[path][request.method](request,response)
+
+  if (request.method === "GET") {
+    response.writeHead(statusCode, headers);
+   return response.end('');
+  }
+  // var path=url.parse(request.url).path.split('/')[1]
+  // return router[path][request.method](request,response)
   /* Without this line, this server wouldn't work. See the note
    * below about CORS. */
 
