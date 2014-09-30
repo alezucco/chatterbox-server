@@ -1,6 +1,6 @@
 /* Import node's http module: */
 var request_handler = require('./request-handler.js');
-var handleRequest = request_handler.handleRequest;
+var handleRequest = request_handler.handler;
 var http = require("http");
 
 
@@ -24,6 +24,7 @@ Lastly, we tell the server we made to listen on the given port and IP. */
 var server = http.createServer(handleRequest);
 console.log("Listening on http://" + ip + ":" + port);
 server.listen(port, ip);
+// 'https://api.parse.com/1/classes/chatterbox/'
 
 /* To start this server, run:
      node basic-server.js
